@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Inomatica.PersonalBlog/Inomatica.PersonalBlog.csproj" />
+  </Folder>
+</Solution>
