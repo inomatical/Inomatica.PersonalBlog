@@ -36,8 +36,10 @@ jobs:
           dotnet publish src/Inomatica.PersonalBlog/Inomatica.PersonalBlog.csproj
           --configuration Release
           --output publish
-          -p:BasePath=/${{ steps.repo.outputs.name }}
-          -p:StaticWebAssetBasePath=/${{ steps.repo.outputs.name }}
+
+      - name: Fix base href in index.html for subpath deployment
+        run: |
+          sed -i 's|<base href="/" />|<base href="/${{ steps.repo.outputs.name }}/" />|g' publish/wwwroot/index.html
 
       - name: Add .nojekyll
         run: touch publish/wwwroot/.nojekyll
